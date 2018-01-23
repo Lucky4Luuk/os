@@ -17,3 +17,10 @@ end
 function clear()
   love.graphics.clear()
 end
+
+function text(text, x, y, height)
+  love.graphics.push()
+  love.graphics.scale(8/64, 8/64)
+  love.graphics.print(text, x, y)
+  love.graphics.pop()
+end

@@ -7,21 +7,27 @@ function lib.draw(frame)
   love.graphics.clear()
   local dy = 0
   love.graphics.setFont(fonts.header)
-  love.graphics.print("Fantasy-OS",2,dy)
-  dy = dy + fonts.header:getHeight()
+  text("Fantasy-OS",2,math.floor(dy),fonts.text:getHeight())
+  dy = dy + fonts.header:getHeight() + 5
   if frame < 10000 then
     love.graphics.setFont(fonts.text)
-    love.graphics.print("Booting...",2,dy)
-    dy = dy + fonts.text:getHeight() + 1
-    love.graphics.print("Done!",2,dy)
-    dy = dy + fonts.text:getHeight() + 1
+    text("Booting...",2,math.floor(dy),fonts.text:getHeight())
+    dy = dy + fonts.text:getHeight() + 5
+    text("Done!",2,math.floor(dy),fonts.text:getHeight())
+    dy = dy + fonts.text:getHeight() + 5
   end
-  if frame < 5000 then
+  if frame > 5000 and frame < 10000 then
     love.graphics.setFont(fonts.text)
-    love.graphics.print("Initializing OS...",2,dy)
-    dy = dy + fonts.text:getHeight() + 1
-    love.graphics.print("Done!",2,dy)
-    dy = dy + fonts.text:getHeight() + 1
+    text("Initializing OS...",2,math.floor(dy),fonts.text:getHeight())
+    dy = dy + fonts.text:getHeight() + 5
+    text("Done!",2,math.floor(dy),fonts.text:getHeight())
+    dy = dy + fonts.text:getHeight() + 5
+    text("abcdefghijklmnopqrstuvwxyz",2,math.floor(dy),fonts.text:getHeight())
+    dy = dy + fonts.text:getHeight() + 5
+    text("0123456789",2,math.floor(dy),fonts.text:getHeight())
+    dy = dy + fonts.text:getHeight() + 5
+    text("!@#$%^&*()-_+=",2,math.floor(dy),fonts.text:getHeight())
+    dy = dy + fonts.text:getHeight() + 5
   end
   love.graphics.setFont(fonts.text)
   love.graphics.setCanvas()

@@ -5,7 +5,7 @@ local boot = require "boot"
 
 love.graphics.setDefaultFilter("nearest","nearest",1)
 
-fonts = {header=love.graphics.newFont(8), text=love.graphics.newFont(4)}
+fonts = {header=love.graphics.newFont("5x5_pixel.ttf",128), text=love.graphics.newFont("5x5_pixel.ttf",64)}
 local debug_font = love.graphics.newFont(16)
 local frame = 0
 local state = "boot"
