@@ -8,6 +8,14 @@ function lib.initialize()
   end
 end
 
+function lib.get_empty_location()
+  for i=1, 2048 do
+    if ram[i] and ram[i].type == nil and ram[i].value == nil then
+      return i
+    end
+  end
+end
+
 function lib.store(location, value_, type_)
   if type(location) == "number" and location < 2049 and location > 0 then
     ram[location] = {type=type_, value=value_}

@@ -1,11 +1,13 @@
 ram = require "ram"
 cpu = require "cpu"
+filesystem = require "filesystem"
+require "utils"
 require "draw"
 local boot = require "boot"
 
 love.graphics.setDefaultFilter("nearest","nearest",1)
 
-fonts = {header=love.graphics.newFont("5x5_pixel.ttf",128), text=love.graphics.newFont("5x5_pixel.ttf",64)}
+fonts = {header=love.graphics.newFont("5x5_square.ttf",128), text=love.graphics.newFont("5x5_square.ttf",64)}
 local debug_font = love.graphics.newFont(16)
 local frame = 0
 local state = "boot"
@@ -15,6 +17,13 @@ local timestep = 1 / cpuHZ
 
 ram.store(1, "C/BIOS/bios", "string")
 ram.store(2, "C/OS/os", "string")
+
+function parse_lxe(path)
+  local file = io.open(path, "r")
+  local data = file:read()
+  file:close()
+  return loadstring("return "..data)()
+end
 
 function love.load()
   --cpu.load()
@@ -43,7 +52,11 @@ function love.update(dt)
 end
 
 function love.keypressed(key, scancode, is_repeat)
-  cpu.execute("input", {key})
+  if state == "boot" then
+    --F2 for BIOS
+  elseif state == "os" then
+    cpu.execute("input", {key})
+  end
 end
 
 function love.draw()
@@ -53,6 +66,6 @@ function love.draw()
     cpu.draw()
   end
   color(1,1,1,1)
-  love.graphics.setFont(debug_font)
-  love.graphics.print(love.timer.getFPS())
+  -- love.graphics.setFont(debug_font)
+  -- love.graphics.print(love.timer.getFPS())
 end
