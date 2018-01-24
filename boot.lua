@@ -7,7 +7,7 @@ function lib.draw(frame)
   love.graphics.clear()
   local dy = 64
   love.graphics.setFont(fonts.header)
-  colored_text("[red] Fall-OS",2,math.floor(dy),64)
+  colored_text("[red] Orbit",16,math.floor(dy),64)
   color(0.6,0.6,0.6)
   line(0, 14, 192, 14)
   color(1,1,1)
@@ -15,28 +15,28 @@ function lib.draw(frame)
   if frame < 10000 then
     love.graphics.setFont(fonts.text)
     if frame < 5000 then
-      text("Booting" .. string.rep(".", (math.floor(frame/500) % 3) + 1),2,math.floor(dy))
+      text("Booting" .. string.rep(".", (math.floor(frame/500) % 3) + 1),16,math.floor(dy))
     else
-      text("Booting...",2,math.floor(dy))
+      text("Booting...",16,math.floor(dy))
     end
     dy = dy + 48
     if frame > 5000 then
-      text("Done!",2,math.floor(dy))
+      text("Done!",16,math.floor(dy))
       dy = dy + 48
     end
   end
   if frame > 5000 and frame < 10000 then
     love.graphics.setFont(fonts.text)
     if frame < 7500 then
-      text("Initializing OS" .. string.rep(".", (math.floor(frame/500) % 3) + 1),2,math.floor(dy))
+      text("Initializing OS" .. string.rep(".", (math.floor(frame/500) % 3) + 1),16,math.floor(dy))
     else
-      text("Initializing OS...",2,math.floor(dy))
+      text("Initializing OS...",16,math.floor(dy))
     end
     dy = dy + 48
     if frame > 7500 then
-      text("Done!",2,math.floor(dy))
+      text("Done!",16,math.floor(dy))
       dy = dy + 48
-      colored_text("Welcome to [red] Fall-OS [white] !",2,math.floor(dy),48)
+      colored_text("Welcome to [red]Orbit-OS [white]!",16,math.floor(dy),48)
       dy = dy + 48
     end
   end

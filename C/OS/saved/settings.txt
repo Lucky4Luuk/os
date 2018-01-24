@@ -1,2 +1,2 @@
 TSKBR C/Programs/Notepad/notepad.lxe
---TSKBR C/Programs/Browser/browser.lxe
+TSKBR C/Programs/Browser/browser.lxe
